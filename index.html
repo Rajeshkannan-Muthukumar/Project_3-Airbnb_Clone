@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Airbnb clone</title>
+</head>
+<body>
+    <div class="learn-tab">
+        <h3>Learn more about icons</h3>
+    </div>
+    <div class="header">
+        <div class="top-left">
+            <i class="fa-brands fa-airbnb" style="color: #e20808; height: auto; width: auto;"></i>
+            <h3>Airbnb</h3>
+        </div>
+        <div class="top-center">
+            <a href="#Places">Places</a>
+            <a href="#Experiences">Experiences</a>
+        </div>
+        <div class="top-right">
+            <a href="#airbnb_your_home">Airbnb your home</a>
+            <!-- <i class="fa-light fa-globe"></i> -->
+            <a href="" id="profileIcon"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </div>
+    <div class="form">
+        <form id="search-bar" class="search-box">
+            <div id="location-container">
+                <label for="location">Location</label><br>
+                <input id="location" type="text" name="place" placeholder="Location" autocomplete="off">
+            </div>
+            <br>
+            <div>
+                <label for="check-in">Check in</label><br>
+                <input id="check-in" type="text" name="checkIn" placeholder="Add date" onfocus="(this.type='date')" onblur="(this.type='text')" />
+            </div>
+            <br>
+            <div>
+                <label for="check-out">Check out</label><br>
+                <input id="check-out" type="text" name="checkOut" placeholder="Add date" onfocus="(this.type='date')" onblur="(this.type='text')" />
+            </div>
+            <br>
+            <div id="guests-container" class="guests-container">
+                <button type="button" onclick="toggleDropdown()" class="Guest">Guest</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <div class="guest-section">
+                        <span>Adults</span>
+                        <div class="counter">
+                            <button type="button" class="decrement" onclick="decrement('adultCount')">-</button>
+                            <span class="count" id="adultCount">0</span>
+                            <button type="button" class="increment" onclick="increment('adultCount')">+</button>
+                        </div>
+                    </div>
+                    <div class="guest-section">
+                        <span>Children</span>
+                        <div class="counter">
+                            <button type="button" class="decrement" onclick="decrement('childCount')">-</button>
+                            <span class="count" id="childCount">0</span>
+                            <button type="button" class="increment" onclick="increment('childCount')">+</button>
+                        </div>
+                    </div>
+                    <div class="guest-section">
+                        <span>Infants</span>
+                        <div class="counter">
+                            <button type="button" class="decrement" onclick="decrement('infantCount')">-</button>
+                            <span class="count" id="infantCount">0</span>
+                            <button type="button" class="increment" onclick="increment('infantCount')">+</button>
+                        </div>
+                    </div>
+                    <div class="guest-section">
+                        <span>Pets</span>
+                        <div class="counter">
+                            <button type="button" class="decrement" onclick="decrement('petCount')">-</button>
+                            <span class="count" id="petCount">0</span>
+                            <button type="button" class="increment" onclick="increment('petCount')">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+        </form>
+    </div>
+    <div class="section" >
+        <div class="card">
+            <img src="./assets/1.jpg">
+            <h4>Villa at Mumbai</h4>
+            <h5>hosted by Rajesh</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/2.jpg">
+            <h4>1 BHK  at NYC</h4>
+            
+            <h5>hosted by Jhanvi</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/3.jpg">
+            <h4>Farm house at CA</h4>
+            
+            <h5>hosted by Jeggi</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/4.jpg">
+            <h4>2BHK at London</h4>
+            
+            <h5>hosted by Rajesh</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/5.jpg">
+            <h4>3BHK at Chennai</h4>
+            
+            <h5>hosted by Nancy Pelosi</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/6.jpg">
+            <h4>Villa at Blr</h4>
+            
+            <h5>hosted by Trump</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/7.jpg">
+            <h4>1BHK Apartment at luxemburg</h4>
+            
+            <h5>hosted by Jennet</h5>   
+            <h6>Sold out</h6>    
+        </div>
+        <div class="card">
+            <img src="./assets/8.jpg">
+            <h4>Villa at Eidenburg</h4>
+            
+            <h5>hosted by Rajesh</h5>   
+            <h6>Sold out</h6>    
+        </div>
+    </div>
+    <div class="footer">
+        <div class="l1">
+            <li><h3>Support</h3></li>
+            <li>Help Centre</li>
+            <li>AirCover</li>
+            <li>Anti-discrimination</li>
+            <li>Disability support</li>
+            <li>Cancellation options</li>
+            <li>Report neighbourhood concern</li>
+        </div>
+        <div class="l2">
+            <li><h3>Hosting</h3></li>
+            <li>Airbnb your home</li>
+            <li>AirCover for Hosts</li>
+            <li>Hosting resources</li>
+            <li>Community forum</li>
+            <li>Hosting responsibly</li>
+            <li>Join a free Hosting class</li>
+        </div>
+        <div class="l3">
+            <li><h3>Airbnb</h3></li>
+            <li>Newsroom</li>
+            <li>New features</li>
+            <li>Careers</li>
+            <li>Investors</li>
+            <li>Cancellation options</li>
+            <li>Airbnb.org emergency stays</li>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
