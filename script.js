@@ -67,3 +67,84 @@ window.onclick = function(event) {
         }
     }
 }
+
+$(document).ready(function() {
+    $("#checkinButton").click(function() {
+        $("#checkinDate").datepicker("show");
+    });
+    $("#checkinDate").datepicker({
+        dateFormat: "mm/dd/yy",
+        minDate: 0, // Set the minimum date to today
+        onSelect: function(dateText) {
+            $("#checkinButton").text("Check-in: " + dateText);
+        }
+    });
+});
+$(document).ready(function() {
+    $("#checkoutButton").click(function() {
+        $("#checkoutDate").datepicker("show");
+    });
+    $("#checkoutDate").datepicker({
+        dateFormat: "mm/dd/yy",
+        minDate: 0, // Set the minimum date to today
+        onSelect: function(dateText) {
+            $("#checkoutButton").text("Check-Out: " + dateText);
+        }
+    });
+});
+
+// Toggle dropdown menu on profile icon click
+$("#profileIcon").click(function(event) {
+    event.stopPropagation();
+    $("#profileDropdown").toggle();
+});
+
+// Close dropdown if clicked outside
+$(document).click(function() {
+    $("#profileDropdown").hide();
+});
+
+// Prevent closing the dropdown when clicking inside
+$("#profileDropdown").click(function(event) {
+    event.stopPropagation();
+});
+
+// Show signup modal
+$("#signupLink").click(function(event) {
+    event.preventDefault();
+    $("#signupModal").show();
+});
+
+// Close modal when clicking the close button
+$(".close").click(function() {
+    $("#signupModal").hide();
+});
+
+// Close modal when clicking outside the modal content
+$(window).click(function(event) {
+    if (event.target == document.getElementById("signupModal")) {
+        $("#signupModal").hide();
+    }
+});
+
+$(document).ready(function() {
+    $('#guestButton').click(function() {
+        $('#guestDropdown').toggle();
+    });
+
+    $('.counter-btn').click(function() {
+        var type = $(this).data('type');
+        var $counter = $('#' + type + 'Count');
+        var count = parseInt($counter.text());
+
+        if ($(this).hasClass('plus')) {
+            count++;
+        } else {
+            if (count > 0) {
+                count--;
+            }
+        }
+
+        $counter.text(count);
+    });
+});
