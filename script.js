@@ -1,59 +1,48 @@
-// Calender constraints
-function openDatePicker(id) {
-    document.getElementById(id).showPicker();
-}
+// // Calender constraints
+// function openDatePicker(id) {
+//     document.getElementById(id).showPicker();
+// }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const checkinInput = document.getElementById('check-in');
-    const checkoutInput = document.getElementById('check-out');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const checkinInput = document.getElementById('check-in');
+//     const checkoutInput = document.getElementById('check-out');
 
-    checkinInput.addEventListener('change', validateDates);
-    checkoutInput.addEventListener('change', validateDates);
+//     checkinInput.addEventListener('change', validateDates);
+//     checkoutInput.addEventListener('change', validateDates);
 
-    function validateDates() {
-        const checkinDate = new Date(checkinInput.value);
-        const checkoutDate = new Date(checkoutInput.value);
+//     function validateDates() {
+//         const checkinDate = new Date(checkinInput.value);
+//         const checkoutDate = new Date(checkoutInput.value);
 
 
-        if (checkoutDate < checkinDate) {
-            alert('Check-out date cannot be before check-in date.');
-            checkoutInput.value = ''; 
-        }
-    }
-});
+//         if (checkoutDate < checkinDate) {
+//             alert('Check-out date cannot be before check-in date.');
+//             checkoutInput.value = ''; 
+//         }
+//     }
+// });
 
-//Guest DropDown
-function toggleDropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+// //Guest DropDown
+// function toggleDropdown() {
+//     document.getElementById("myDropdown").classList.toggle("show");
+// }
 
-function increment(id) {
-    const countElement = document.getElementById(id);
-    let count = parseInt(countElement.innerText);
-    countElement.innerText = ++count;
-    checkTotalGuests();
-}
+// function increment(id) {
+//     const countElement = document.getElementById(id);
+//     let count = parseInt(countElement.innerText);
+//     countElement.innerText = ++count;
+//     checkTotalGuests();
+// }
 
-function decrement(id) {
-    const countElement = document.getElementById(id);
-    let count = parseInt(countElement.innerText);
-    if (count > 0) {
-        countElement.innerText = --count;
-    }
-    checkTotalGuests();
-}
+// function decrement(id) {
+//     const countElement = document.getElementById(id);
+//     let count = parseInt(countElement.innerText);
+//     if (count > 0) {
+//         countElement.innerText = --count;
+//     }
+//     checkTotalGuests();
+// }
 
-function checkTotalGuests() {
-    const adultCount = parseInt(document.getElementById('adultCount').innerText);
-    const childCount = parseInt(document.getElementById('childCount').innerText);
-    const infantCount = parseInt(document.getElementById('infantCount').innerText);
-    const petCount = parseInt(document.getElementById('petCount').innerText);
-
-    const totalGuests = adultCount + childCount + infantCount + petCount;
-    if (totalGuests >= 10) {
-        alert('The total number of guests cannot exceed 10.');
-    }
-}
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
@@ -77,10 +66,10 @@ $(document).ready(function() {
         minDate: 0, // Set the minimum date to today
         onSelect: function(dateText) {
             $("#checkinButton").text("Check-in: " + dateText);
+            checkSameDate();
         }
     });
-});
-$(document).ready(function() {
+    
     $("#checkoutButton").click(function() {
         $("#checkoutDate").datepicker("show");
     });
@@ -89,9 +78,20 @@ $(document).ready(function() {
         minDate: 0, // Set the minimum date to today
         onSelect: function(dateText) {
             $("#checkoutButton").text("Check-Out: " + dateText);
+            checkSameDate();
         }
     });
+
+    function checkSameDate() {
+        var checkinDate = $("#checkinDate").datepicker("getDate");
+        var checkoutDate = $("#checkoutDate").datepicker("getDate");
+        
+        if (checkinDate && checkoutDate && checkinDate.getTime() === checkoutDate.getTime()) {
+            alert("Check-in and Check-Out dates cannot be the same.");
+        }
+    }
 });
+
 
 // Toggle dropdown menu on profile icon click
 $("#profileIcon").click(function(event) {
@@ -116,9 +116,9 @@ $("#signupLink").click(function(event) {
 });
 
 // Close modal when clicking the close button
-$(".close").click(function() {
-    $("#signupModal").hide();
-});
+// $(".close").click(function() {
+//     $("#signupModal").hide();
+// });
 
 // Close modal when clicking outside the modal content
 $(window).click(function(event) {
@@ -126,6 +126,28 @@ $(window).click(function(event) {
         $("#signupModal").hide();
     }
 });
+
+// $(document).ready(function() {
+//     $('#guestButton').click(function() {
+//         $('#guestDropdown').toggle();
+//     });
+
+//     $('.counter-btn').click(function() {
+//         var type = $(this).data('type');
+//         var $counter = $('#' + type + 'Count');
+//         var count = parseInt($counter.text());
+
+//         if ($(this).hasClass('plus')) {
+//             count++;
+//         } else {
+//             if (count > 0) {
+//                 count--;
+//             }
+//         }
+
+//         $counter.text(count);
+//     });
+// });
 
 $(document).ready(function() {
     $('#guestButton').click(function() {
@@ -146,5 +168,19 @@ $(document).ready(function() {
         }
 
         $counter.text(count);
+
+        // Check total guest count
+        checkTotalCount();
     });
+
+    function checkTotalCount() {
+        var total = 0;
+        $('#guestDropdown span').each(function() {
+            total += parseInt($(this).text());
+        });
+
+        if (total > 10) {
+            alert("Total guests cannot exceed 10.");
+        }
+    }
 });
